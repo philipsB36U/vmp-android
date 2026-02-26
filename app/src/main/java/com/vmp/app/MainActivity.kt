@@ -1,42 +1,24 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-}
+package com.vmp.app
 
-android {
-    namespace 'com.vmp.app'
-    compileSdk 34
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 
-    defaultConfig {
-        applicationId "com.vmp.app"
-        minSdk 24
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
-    }
-
-    buildFeatures {
-        compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.4'
-    }
-
-    kotlinOptions {
-        jvmTarget = '17'
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MyApp()
+        }
     }
 }
 
-dependencies {
-
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation 'androidx.activity:activity-compose:1.8.2'
-
-    implementation platform('androidx.compose:compose-bom:2023.10.01')
-    implementation 'androidx.compose.ui:ui'
-    implementation 'androidx.compose.material3:material3'
-    implementation 'androidx.compose.ui:ui-tooling-preview'
-
-    debugImplementation 'androidx.compose.ui:ui-tooling'
+@Composable
+fun MyApp() {
+    MaterialTheme {
+        Text("Hello VMP")
+    }
 }
